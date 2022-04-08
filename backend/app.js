@@ -7,7 +7,19 @@ routeUser = require('./routes/users');
 routeProfile = require('./routes/profiles');
 routeAcess_level = require('./routes/acess_levels');
 
+
 const app = express();
+
+/*atualizacao do banco de dados, caso exista inclusao de tabelas
+(async () => {
+    const db = require('./db');
+    const Acess_levels = require('./models/acess_levels');
+    const Users = require('./models/users');
+    const Profiles = require('./models/profiles')
+
+    await db.sync({ force: true });
+})();
+*/
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

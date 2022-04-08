@@ -11,10 +11,10 @@ const Profiles = db.define('profiles', {
         primaryKey: true
     },
     name: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING(60)
     },
     last_name: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING(60)
     },
     birth_data: {
         type: Sequelize.DATE
@@ -28,7 +28,7 @@ Profiles.belongsTo(Users, {
 
 Profiles.belongsTo(Acess_levels, {
     constraint: true,
-    foreignkey: 'acess_level'
+    foreignkey: 'level'
 })
 
 module.exports = Profiles;

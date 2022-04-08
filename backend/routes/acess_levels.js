@@ -1,20 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const levelsControllers = require('../controllers/acess_levels')
+const login = require('../middleware/login')
 
-const db = require('./../db');
-const Acess_levels = require('../models/acess_levels');
-
-router.post('/', (req, res) => {
-
-    const newAcess_level = Acess_levels.create({
-        level: req.body.level,
-        description: req.body.description
-    });
-
-    res.status(200).send({
-        msg: "Novo nível adicionado com sucesso"
-    });
-
-});
+router.post('/', login.advancedLevel, levelsControllers.postAcess_level);
+router.get('/all', login.intermediaryLevel, levelsControllers.getAllAcess_level);
+router.delete('/:level', login.advancedLevel, levelsControllers.deleteAcess_level);
 
 module.exports = router;

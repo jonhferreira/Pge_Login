@@ -9,11 +9,11 @@ const Users = db.define('users', {
         primaryKey: true
     },
     email: {
-        type: Sequelize.STRING(60),
+        type: Sequelize.STRING(100),
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING(60),
+        type: Sequelize.STRING(100),
         allowNull: false
     }
 });
