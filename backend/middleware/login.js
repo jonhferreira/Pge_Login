@@ -30,6 +30,22 @@ async function levelVerify(req, res, next, level) {
     }
 }
 
+async function tokenVerify(req, res, next) {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const token_decode = jwt.verify(token, "chave");
+
+        req.user = token_decode;
+
+        next();
+    }
+    catch (error) {
+        return res.status(401).send({
+            mensagem: "Falha de autentificação",
+            checktoken: false
+        });
+    }
+}
 
 // nivel basico de acesso
 exports.basicLevel = (req, res, next) => {
@@ -45,3 +61,7 @@ exports.intermediaryLevel = (req, res, next) => {
 exports.advancedLevel = (req, res, next) => {
     levelVerify(req, res, next, 3);
 };
+
+exports.tokenVerify = (req, res, next) => {
+    tokenVerify(req, res, next)
+}

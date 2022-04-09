@@ -6,6 +6,7 @@ const Users = require('./../models/users')
 exports.postLogin = async (req, res) => {
 
     const user_email = req.body.email;
+    console.log("aqui", user_email)
     const user_password = req.body.password;
 
     const user = await Users.findOne({
@@ -56,3 +57,10 @@ exports.registerUser = (req, res) => {
 
     })
 };
+
+exports.checkToken = (req, res) => {
+    return res.status(200).send({
+        mensagem: "Token validado",
+        checktoken: true
+    })
+}
