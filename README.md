@@ -4,9 +4,9 @@ Repositório correspondente ao desenvolvimento de sistema de login, como forma d
 ## Composição do projeto
 
 O projeto é composto de maneira geral das seguintes pastas:
-* [banco_de_dados].(banco.md)
-* [backend].(backend.md)
-* [frontend].(frontend.md)
+* [banco_de_dados](banco.md)
+* [backend](backend.md)
+* [frontend](frontend.md)
 	
 Atenção: para a execução correta da aplicação é importante seguir a ordem apresentada: Banco de dados, Backend e por fim Frontend.
 

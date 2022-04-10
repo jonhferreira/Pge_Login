@@ -7,11 +7,11 @@ O banco de dados da aplicação é em MySQL e está em um container docker, tal 
 Instalado o docker, acesse a pasta banco_de_dados pelo terminal e execute o comando
 
 ```
-tar -c db.tgz | docker import db.tgz
+# zcat db.gz | docker import - db
 ```
 
 Em seguida para a execução da imagem execute
 
 ```
-docker run -it meudjango bash
+docker run -it db bash
 ```
