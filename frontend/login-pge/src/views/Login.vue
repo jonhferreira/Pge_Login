@@ -9,7 +9,7 @@
         <img src="../assets/img/logo.png" />
         <div class="input-box">
           <span>Usuário</span>
-          <input type="email" v-model="email" placeholder="Digite o usuário" />
+          <input v-model="user" placeholder="Digite o usuário" />
         </div>
         <div class="input-box">
           <span>Senha</span>
@@ -188,7 +188,7 @@ import api from "../plugins/axios";
 export default {
   data() {
     return {
-      email: "",
+      user: "",
       password: "",
     };
   },
@@ -196,7 +196,7 @@ export default {
   methods: {
     async send() {
       var data = {
-        email: this.email,
+        user: this.user,
         password: this.password,
       };
 
@@ -204,9 +204,11 @@ export default {
         .post("users/login", data)
         .then((response) => {
           localStorage.getItem("token", response.data.token);
+          alert(response.data.mensagem);
+          this.$router.push("/home");
         })
         .catch((error) => {
-          console.log(error);
+          alert("Usuário ou senha inválido");
         });
     },
   },
