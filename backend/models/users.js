@@ -8,9 +8,10 @@ const Users = db.define('users', {
         allowNull: false,
         primaryKey: true
     },
-    email: {
+    user: {
         type: Sequelize.STRING(100),
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING(100),

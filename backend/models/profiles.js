@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./../db');
 const Users = require('./users');
-const Acess_levels = require('./acess_levels');
+const Access_levels = require('./access_levels');
 
 const Profiles = db.define('profiles', {
     id_profile: {
@@ -9,6 +9,11 @@ const Profiles = db.define('profiles', {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
+    },
+    cpf: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+        unique: true
     },
     name: {
         type: Sequelize.STRING(60)
@@ -26,7 +31,7 @@ Profiles.belongsTo(Users, {
     foreignkey: 'user'
 });
 
-Profiles.belongsTo(Acess_levels, {
+Profiles.belongsTo(Access_levels, {
     constraint: true,
     foreignkey: 'level'
 })

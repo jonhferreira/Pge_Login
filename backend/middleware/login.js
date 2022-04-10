@@ -5,7 +5,7 @@ const Profiles = require('./../models/profiles');
 async function levelVerify(req, res, next, level) {
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const token_decode = jwt.verify(token, "chave");
+        const token_decode = jwt.verify(token, process.env.JWT_KEY);
 
         req.user = token_decode;
 
@@ -16,7 +16,7 @@ async function levelVerify(req, res, next, level) {
         }
         else {
 
-            if (profile.acessLevelLevel >= level) {
+            if (profile.accessLevelLevel >= level) {
                 next();
             }
 

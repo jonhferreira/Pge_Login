@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 
 var sequelize = new Sequelize(
-    'users_pge',
-    'root',
-    'Pge_04_37_20',
+    process.env.MYSQL_DATABASE,
+    process.env.MYSQL_USER,
+    process.env.MYSQL_PASSWORD,
     {
         dialect: 'mysql',
-        host: 'localhost',
-        port: 3306,
+        host: process.env.MYSQL_HOST,
+        port: process.env.MYSQL_PORT,
         define: {
             timestamps: false
         }

@@ -1,0 +1,10 @@
+{
+    "env": {
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "Pge_04_37_20",
+        "MYSQL_DATABASE": "users_pge",
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": 3306,
+        "JWT_KEY": "7p11g13e19"
+    }
+}

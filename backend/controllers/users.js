@@ -5,26 +5,25 @@ const Users = require('./../models/users')
 
 exports.postLogin = async (req, res) => {
 
-    const user_email = req.body.email;
-    console.log("aqui", user_email)
-    const user_password = req.body.password;
+    const req_user = req.body.user;
+    const req_password = req.body.password;
 
     const user = await Users.findOne({
         where: {
-            email: user_email
+            user: req_user
         }
     });
 
-    bcryptjs.compare(user_password, user.password, (err, result) => {
+    bcryptjs.compare(req_password, user.password, (err, result) => {
         if (err) {
             return res.status(401).send({ mensagem: "Erro ao se autentificar" });
         }
         if (result) {
             const token = jwt.sign({
                 id_user: user.id_user,
-                email: user.email
+                user: user.user
             },
-                "chave",
+                process.env.JWT_KEY,
                 {
                     expiresIn: "1h"
                 }
@@ -49,13 +48,29 @@ exports.registerUser = (req, res) => {
         }
 
         const newUser = Users.create({
-            email: req.body.email,
+            user: req.body.user,
             password: hash
         });
 
         res.status(200).send({ msg: "Usuário cadastrado" });
 
     })
+};
+
+exports.updateUser = (req, res) => {
+
+    Users.update({
+        password: req.body.password
+    }, {
+        where: {
+            id_user: req.body.id_user
+        }
+    });
+
+    res.status(200).send({
+        msg: "Senha foi modificada"
+    });
+
 };
 
 exports.checkToken = (req, res) => {

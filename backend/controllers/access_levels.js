@@ -1,8 +1,8 @@
-const Acess_levels = require('../models/acess_levels');
+const Access_levels = require('../models/access_levels');
 
-exports.postAcess_level = (req, res) => {
+exports.postAccess_level = (req, res) => {
 
-    const newAcess_level = Acess_levels.create({
+    const newAcess_level = Access_levels.create({
         level: req.body.level,
         description: req.body.description
     });
@@ -13,17 +13,17 @@ exports.postAcess_level = (req, res) => {
 
 };
 
-exports.getAllAcess_level = async (req, res) => {
+exports.getAllAccess_level = async (req, res) => {
 
-    const acess_levels = await Acess_levels.findAll();
+    const access_levels = await Access_levels.findAll();
 
     return res.status(200).send({
         mensagem: "Novo nível adicionado com sucesso",
-        levels: acess_levels
+        levels: access_levels
     });
 }
 
-exports.deleteAcess_level = (req, res) => {
+exports.deleteAccess_level = (req, res) => {
     Acess_levels.destroy({
         where: {
             level: req.params.level

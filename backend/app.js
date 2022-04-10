@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 routeUser = require('./routes/users');
 routeProfile = require('./routes/profiles');
-routeAcess_level = require('./routes/acess_levels');
+routeAccess_level = require('./routes/access_levels');
 
 
 const app = express();
@@ -13,7 +13,7 @@ const app = express();
 /*atualizacao do banco de dados, caso exista inclusao de tabelas
 (async () => {
     const db = require('./db');
-    const Acess_levels = require('./models/acess_levels');
+    const Access_levels = require('./models/access_levels');
     const Users = require('./models/users');
     const Profiles = require('./models/profiles')
 
@@ -43,6 +43,6 @@ app.use((req, res, next) => {
 
 app.use('/users', routeUser);
 app.use('/profiles', routeProfile);
-app.use('/acess_level', routeAcess_level);
+app.use('/access_level', routeAccess_level);
 
 module.exports = app;

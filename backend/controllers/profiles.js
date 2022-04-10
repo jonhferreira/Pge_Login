@@ -4,11 +4,12 @@ const Profiles = require('./../models/profiles');
 exports.postProfile = (req, res) => {
 
     const newProfile = Profiles.create({
+        cpf: req.body.cpf,
         name: req.body.name,
         last_name: req.body.last_name,
         birth_data: req.body.birth_data,
         userIdUser: req.body.user,
-        acessLevelLevel: req.body.acess_level
+        accessLevelLevel: req.body.access_level
     });
 
     res.status(200).send({
@@ -29,11 +30,12 @@ exports.getProfile = async (req, res) => {
 
     res.status(200).send({
         mensagem: "Perfil encontrado",
+        cpf: profile.cpf,
         name: profile.name,
         last_name: profile.last_name,
         birth_data: profile.birth_data,
-        id_user: profile.userIdUser,
-        acess_level: profile.acessLevelLevel
+        user: profile.userIdUser,
+        access_level: profile.accessLevelLevel
     });
 
 };
@@ -48,3 +50,34 @@ exports.getAllProfile = async (req, res) => {
     });
 
 };
+
+exports.updateProfile = (req, res) => {
+
+    Profiles.update({
+        cpf: req.body.cpf,
+        name: req.body.name,
+        last_name: req.body.last_name,
+        birth_data: req.body.birth_data,
+        accessLevelLevel: req.body.access_level
+    }, {
+        where: {
+            userIdUser: req.user.id_user
+        }
+    });
+
+    res.status(200).send({
+        msg: "Perfil foi atualizado"
+    });
+
+};
+
+
+exports.deleteProfile = (req, res) => {
+    Profiles.destroy({
+        where: {
+            userIdUser: req.params.id_user
+        }
+    })
+
+    return res.status(200).send({ mensagem: "Perfil foi excluido" })
+}

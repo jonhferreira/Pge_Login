@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Acess_levels = db.define('acess_levels', {
+const Access_levels = db.define('access_levels', {
     level: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -12,4 +12,4 @@ const Acess_levels = db.define('acess_levels', {
     }
 });
 
-module.exports = Acess_levels;
+module.exports = Access_levels;
