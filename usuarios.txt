@@ -1,0 +1,13 @@
+#### Usuários para logar no sistema ####
+
+user: maria_pge
+password: 246810
+
+
+user": silvino_pge
+password: 123456
+
+
+user: josefa_pge
+password: 1357911
+
