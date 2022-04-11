@@ -20,4 +20,4 @@ npm run dev
 
 Após a execução desse comando, caso não apareça nenhum erro, a nossa aplicação está em execução e você pode acessá-la pelo [link](http://localhost:3000/) e verá a seguinte tela:
 
-<img src="/../../imagens/funcionando_front.png" alt="Tela de login">
+<img src="../../imagens/funcionando_front.png" alt="Tela de login">
