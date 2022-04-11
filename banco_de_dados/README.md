@@ -22,7 +22,7 @@ Com isso seu container vai estar executando, e você podera acessa seu banco de 
 
 Abra o MySQL Workbench, clique no *+* para criar uma nova conexão.
 
-<img src='/../imagens/criar_conex.png'>
+<img src='../imagens/criar_conex.png'>
 
 Abrirá um formulário, requisitando dados para iniciar a sua conexão com o banco de dados.
 
