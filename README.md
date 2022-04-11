@@ -45,8 +45,12 @@ Junto a instalação do nodejs o gerenciador de pacote <npm> também é instalad
 
 ## Instruções para execução
 
-* Com executar [Banco de dados](/banco_de_dados/banco.md)
-* Como executar [Backend](/backend/backend.md)
-* Com executar [Frontend](/frontend/login-pge/frontend.md)
+* Com executar [Banco de dados](/banco_de_dados/README.md)
+* Como executar [Backend](/backend/README.md)
+* Com executar [Frontend](/frontend/login-pge/README.md)
 
 *Atenção*: para a execução correta da aplicação é importante seguir a ordem apresentada: Banco de dados, Backend e por fim Frontend.
+
+## Instruções para o uso
+
+Com a execução correta você podera acessar o [link](http://localhost:3000/) e utilizar alguns dos [usuários e senhas](usuarios.txt) para verificar a autentificação.

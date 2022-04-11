@@ -1,35 +1,23 @@
-# login-pge
+# Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+O Frontend desse projeto corresponde a uma tela de login desenvolvida em Vue.js, a qual será utilizada para validação de acesso ao sistema.
 
-## Recommended IDE Setup
+## Instruções para execução
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Com os pré-requisitos instalados, entre na pasta frontend/login-pge pelo terminal e escreva o seguinte comando:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Esse comando irá instalar todas as dependências necessárias para a correta execução do frontend do projeto, inclusive o próprio Vue
+
+Terminada a instalação das dependências, execute o comando:
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Após a execução desse comando, caso não apareça nenhum erro, a nossa aplicação está em execução e você pode acessá-la pelo [link](http://localhost:3000/) e verá a seguinte tela:
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+<img src="/../../imagens/funcionando_front.png" alt="Tela de login">
