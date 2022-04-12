@@ -10,16 +10,6 @@ routeAccess_level = require('./routes/access_levels');
 
 const app = express();
 
-/*atualizacao do banco de dados, caso exista inclusao de tabelas
-(async () => {
-    const db = require('./db');
-    const Access_levels = require('./models/access_levels');
-    const Users = require('./models/users');
-    const Profiles = require('./models/profiles')
-
-    await db.sync({ force: true });
-})();
-*/
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
