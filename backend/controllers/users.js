@@ -1,75 +1,107 @@
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Users = require('./../models/users')
+const Users = require('../models/users')
 
 
 exports.postLogin = async (req, res) => {
 
-    const req_user = req.body.user;
-    const req_password = req.body.password;
+    try {
+        const req_user = req.body.user;
+        const req_password = req.body.password;
 
-    const user = await Users.findOne({
-        where: {
-            user: req_user
-        }
-    });
+        const user = await Users.findOne({
+            where: {
+                user: req_user
+            }
+        });
 
-    bcryptjs.compare(req_password, user.password, (err, result) => {
-        if (err) {
+        bcryptjs.compare(req_password, user.password, (err, result) => {
+            if (err) {
+                return res.status(401).send({ mensagem: "Erro ao se autentificar" });
+            }
+            if (result) {
+                const token = jwt.sign({
+                    id_user: user.id_user,
+                    user: user.user
+                },
+                    process.env.JWT_KEY,
+                    {
+                        expiresIn: "1h"
+                    }
+                )
+
+                return res.status(200).send({
+                    mensagem: "Autentificação realizada",
+                    token: token
+                });
+            }
+
             return res.status(401).send({ mensagem: "Erro ao se autentificar" });
-        }
-        if (result) {
-            const token = jwt.sign({
-                id_user: user.id_user,
-                user: user.user
-            },
-                process.env.JWT_KEY,
-                {
-                    expiresIn: "1h"
-                }
-            )
+        });
 
-            return res.status(200).send({
-                mensagem: "Autentificação realizada",
-                token: token
-            });
-        }
+    } catch (error) {
+        return res.status(500).send({
+            mensagem: "Erro ao logar no sistema",
+            error
+        });
+    }
 
-        return res.status(401).send({ mensagem: "Erro ao se autentificar" });
-    });
 
 };
 
 exports.registerUser = (req, res) => {
+    try {
+        bcryptjs.hash(req.body.password, 10, (err, hash) => {
+            if (err) {
+                return res.status(500).send({ error: err })
+            }
 
-    bcryptjs.hash(req.body.password, 10, (err, hash) => {
-        if (err) {
-            return res.status(500).send({ error: err })
-        }
+            Users.create({
+                user: req.body.user,
+                password: hash
+            });
 
-        const newUser = Users.create({
-            user: req.body.user,
-            password: hash
+            return res.status(200).send({ mensagem: "Usuário cadastrado" });
+
+        })
+
+    } catch (error) {
+        return res.status(500).send({
+            mensagem: "Erro ao se registrar no sistema",
+            error
         });
+    }
 
-        res.status(200).send({ msg: "Usuário cadastrado" });
-
-    })
 };
 
 exports.updateUser = (req, res) => {
+    try {
 
-    Users.update({
-        password: req.body.password
-    }, {
-        where: {
-            id_user: req.body.id_user
-        }
-    });
+        bcryptjs.hash(req.body.new_password, 10, (err, hash) => {
+            if (err) {
+                return res.status(500).send({ error: err })
+            }
 
-    res.status(200).send({
-        msg: "Senha foi modificada"
-    });
+            Users.update({
+                password: hash
+            },
+                {
+                    where: {
+                        user: req.body.user
+                    }
+                });
+
+            return res.status(200).send({
+                mensagem: "Senha foi modificada"
+            });
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            mensagem: "Erro ao modificar senha",
+            error
+        });
+    }
 
 };
 
@@ -77,5 +109,5 @@ exports.checkToken = (req, res) => {
     return res.status(200).send({
         mensagem: "Token validado",
         checktoken: true
-    })
+    });
 }
