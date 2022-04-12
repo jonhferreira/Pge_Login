@@ -23,3 +23,5 @@ Após a execução desse comando, caso não apareça nenhum erro, a nossa Api es
 ## Acessando as rotas
 
 Você podera acessar as rotas, realizar requests e receber as resposta através do link da [documentação do backend](http://localhost:3003/api-docs/#/).
+
+*Atenção* você só podera acessa a documentação se a Api estiver executando
