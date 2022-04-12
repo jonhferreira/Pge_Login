@@ -60,7 +60,7 @@ CREATE TABLE `profiles` (
   KEY `accessLevelLevel` (`accessLevelLevel`),
   CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`userIdUser`) REFERENCES `users` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `profiles_ibfk_2` FOREIGN KEY (`accessLevelLevel`) REFERENCES `access_levels` (`level`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'000.000.000-01','Maria','de Mariana','2000-01-01 00:00:00',1,1),(2,'000.000.000-02','Silvino','da Silva','1999-02-02 00:00:00',2,2),(3,'000.000.000-03','Josefa','de Jose','1998-03-03 00:00:00',3,3);
+INSERT INTO `profiles` VALUES (8,'000.000.000-01','Maria','de Maria','2000-01-01 00:00:00',1,1),(11,'000.000.000-02','Silvino','da Silva','1998-02-02 00:00:00',9,2),(13,'000.000.000-03','Josefa','de Jose','1997-03-03 00:00:00',10,3);
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'maria_pge','$2a$10$z6de1MaCb7789pN9OURAJOyEHd9nR4BVe8ZWNuM7kuymZfkfpYBca'),(2,'silvino_pge','$2a$10$yBLzDf3Wj7IY9Fe4HEw5P.bbVsb1a4IVTVShO0b/c8AYpLXfpFK1W'),(3,'josefa_pge','$2a$10$R.s.wzeI/r1KHiU./tiBuOS3FG4DEsLAQRplSbzO/84D5ss0f4Lay');
+INSERT INTO `users` VALUES (1,'maria_pge','$2a$10$kFU02Sjme55ZGC8f8LyaVuOprzf9H4.82v9nZBoaeblEK/0y1Rn5W'),(9,'silvino_pge','$2a$10$uSw4FX26fqu0sCiRFkBGMuzLE9/vPz8jrIOPiAsbU0gemr2aotbdu'),(10,'josefa_pge','$2a$10$m5SiFWk5EcrFnXwb3poXDen3b4NOrkFLT4S9Ezwn3myM/AbUwb236');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-10 21:24:11
+-- Dump completed on 2022-04-12 20:04:38

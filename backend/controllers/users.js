@@ -105,6 +105,24 @@ exports.updateUser = (req, res) => {
 
 };
 
+exports.deleteUser = (req, res) => {
+    try {
+        Users.destroy({
+            where: {
+                id_user: req.params.id_user
+            }
+        });
+
+        return res.status(200).send({ mensagem: "Usuário foi excluido" });
+
+    } catch (error) {
+        return res.status(500).send({
+            mensagem: "Erro ao excluir usuário",
+            error
+        });
+    }
+}
+
 exports.checkToken = (req, res) => {
     return res.status(200).send({
         mensagem: "Token validado",

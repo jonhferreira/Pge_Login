@@ -14,7 +14,7 @@ exports.postProfile = (req, res) => {
         });
 
         return res.status(200).send({
-            msg: "Perfil foi adicionado"
+            mensagem: "Perfil foi adicionado"
         });
 
     } catch (error) {

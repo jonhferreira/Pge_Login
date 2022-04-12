@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('./swagger_output.json')
 
 routeUser = require('./routes/users');
 routeProfile = require('./routes/profiles');
@@ -31,8 +33,9 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/users', routeUser);
-app.use('/profiles', routeProfile);
-app.use('/access_level', routeAccess_level);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(routeUser);
+app.use(routeProfile);
+app.use(routeAccess_level);
 
 module.exports = app;

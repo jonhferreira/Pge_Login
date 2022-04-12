@@ -1,0 +1,425 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Api REST de autentificação de Login",
+    "description": "Essa Api disponibiliza as rotas necessária para o sistema de login da PGE",
+    "contact": {
+      "email": "jonhifs@gmail.com"
+    }
+  },
+  "host": "localhost:3003",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/access_level/": {
+      "post": {
+        "summary": "Cadastro de nível de acesso",
+        "description": "Rota para adição de níveis de acesso",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Nível de acesso"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Level"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Novo nível adicionado com sucesso"
+          },
+          "500": {
+            "description": "Erro ao adicionar nivel de acesso"
+          }
+        }
+      }
+    },
+    "/access_level/all": {
+      "get": {
+        "summary": "Exibição dos níveis de acesso",
+        "description": "Rota para exibição de todos de níveis de acesso do sistema",
+        "tags": [
+          "Nível de acesso"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Níveis de acesso disponiveis"
+          },
+          "500": {
+            "description": "Erro ao acessar níveis"
+          }
+        }
+      }
+    },
+    "/access_level/{level}": {
+      "delete": {
+        "summary": "Exclusão de nível de acesso",
+        "description": "Rota para exclusão de nível de acesso",
+        "tags": [
+          "Nível de acesso"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "level",
+            "in": "path",
+            "description": "Número do nível de acesso",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nivel de acesso excluido"
+          },
+          "500": {
+            "description": "Erro ao deletar nivel de acesso"
+          }
+        }
+      }
+    },
+    "/profiles/": {
+      "post": {
+        "summary": "Cadastro de perfil de usuário",
+        "description": "Rota para cadastrar dados relacionados ao perfil do usuário",
+        "tags": [
+          "Perfil"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Perfil foi adicionado"
+          },
+          "500": {
+            "description": "Erro ao adicionar perfil"
+          }
+        }
+      }
+    },
+    "/profiles/all": {
+      "get": {
+        "summary": "Todos os perfis do sistema",
+        "description": "Rota para recuperação dos dados de todos os perfis cadastrados",
+        "tags": [
+          "Perfil"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Perfis encontrados"
+          },
+          "500": {
+            "description": "Erro ao acessar perfis"
+          }
+        }
+      }
+    },
+    "/profiles/{id_user}": {
+      "get": {
+        "summary": "Perfil individual",
+        "description": "Rota recuperação de dados do perfil de um usuário",
+        "tags": [
+          "Perfil"
+        ],
+        "parameters": [
+          {
+            "name": "id_user",
+            "in": "path",
+            "description": "id do usuário dono do perfil",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Perfil encontrado"
+          },
+          "404": {
+            "description": "Perfil não encontrado"
+          },
+          "500": {
+            "description": "Erro ao acessar perfil"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar perfil",
+        "description": "Rota para remoção de um perfil de usuário",
+        "tags": [
+          "Perfil"
+        ],
+        "parameters": [
+          {
+            "name": "id_user",
+            "description": "id do usuário dono do perfil",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Perfil foi excluido"
+          },
+          "500": {
+            "description": "Erro ao excluir perfil"
+          }
+        }
+      }
+    },
+    "/profiles/update": {
+      "patch": {
+        "description": "",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Perfil"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Perfil foi atualizado"
+          },
+          "500": {
+            "description": "Erro ao atualizar perfil"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login do usuário",
+        "description": "Rota para autentificação do usuário",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Autentificação realizada"
+          },
+          "401": {
+            "description": "Erro ao se autentificar"
+          },
+          "500": {
+            "description": "Erro ao logar no sistema"
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "summary": "Cadastro de um usuário",
+        "description": "Rota para cadastro de um usuário",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário cadastrado"
+          },
+          "500": {
+            "description": "Erro ao se registrar no sistema"
+          }
+        }
+      }
+    },
+    "/users/verifyToken": {
+      "get": {
+        "summary": "Verifica validade do token",
+        "description": "Rota para verificação de validade do token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Usuário"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Token validado"
+          }
+        }
+      }
+    },
+    "/users/modify_pass": {
+      "patch": {
+        "summary": "Mudança de senha",
+        "description": "Rota para troca de senha pelo usuário",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterPass"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Senha foi modificada"
+          },
+          "500": {
+            "description": "Erro ao modificar senha"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "cpf": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "birth_data": {
+            "type": "string",
+            "format": "date"
+          },
+          "user": {
+            "type": "integer"
+          },
+          "access_level": {
+            "type": "integer"
+          }
+        }
+      },
+      "ProfileUpdate": {
+        "type": "object",
+        "properties": {
+          "cpf": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "birth_data": {
+            "type": "string",
+            "format": "date"
+          },
+          "access_level": {
+            "type": "integer"
+          }
+        }
+      },
+      "Level": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Login": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "AlterPass": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

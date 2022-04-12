@@ -26,7 +26,7 @@ exports.getAllAccess_level = async (req, res) => {
         const access_levels = await Access_levels.findAll();
 
         return res.status(200).send({
-            mensagem: "Novo nível adicionado com sucesso",
+            mensagem: "Niveis de acesso",
             levels: access_levels
         });
 
