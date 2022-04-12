@@ -2,17 +2,17 @@
 
 ### Nível básico de acesso ao sistema ###
 
-user: maria_pge
-password: 246810
+"user": "maria_pge",
+"password": "246810"
 
 ### Nível intermediário de acesso ao sistema ###
 
-user": silvino_pge
-password: 123456
+"user": "silvino_pge",
+"password": "123456"
 
 
 ### Nível avançado de acesso ao sistema ###
 
-user: josefa_pge
-password: 1357911
+"user": "josefa_pge",
+"password": "1357911"
 

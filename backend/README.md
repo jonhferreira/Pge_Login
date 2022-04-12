@@ -20,3 +20,6 @@ node server.js
 
 Após a execução desse comando, caso não apareça nenhum erro, a nossa Api está sendo executada e você já pode estar enviando requisições para ela.
 
+## Acessando as rotas
+
+Você podera acessar as rotas, realizar requests e receber as resposta através do link da [documentação do backend](http://localhost:3003/api-docs/#/).

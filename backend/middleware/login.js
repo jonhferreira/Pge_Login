@@ -6,7 +6,7 @@ async function levelVerify(req, res, next, level) {
     try {
         const token = req.headers.authorization.split(' ')[1];
         const token_decode = jwt.verify(token, process.env.JWT_KEY);
-
+        console.log(token_decode.id_user)
         req.user = token_decode;
 
         const profile = await Profiles.findOne({ where: { userIdUser: token_decode.id_user } })
