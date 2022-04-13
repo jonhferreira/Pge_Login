@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     validate() {
-      console.log("alguma coisa");
 
       api
         .get("users/verifyToken")
